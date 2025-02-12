@@ -1,0 +1,6 @@
+@MaisUmaRedeSocial_HostAddress = http://localhost:5052
+
+GET {{MaisUmaRedeSocial_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
