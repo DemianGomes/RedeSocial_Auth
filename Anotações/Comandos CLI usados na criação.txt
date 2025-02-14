@@ -1,0 +1,40 @@
+1. Instalar o Entity Framework
+dotnet tool install --global dotnet-ef
+
+2. Criar e aplicar as migrations
+Rode os seguintes comandos no terminal:
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+Isso vai criar um arquivo app.db na pasta do projeto, que é seu banco SQLite.
+
+
+ -- Atualizar modelos
+ 
+1️⃣ Gerar uma nova migration
+Depois de modificar a classe User, execute o comando:
+
+sh
+Copiar
+Editar
+dotnet ef migrations add NomeDaMigration
+Substitua NomeDaMigration por algo descritivo, como UpdateUserTable.
+
+2️⃣ Aplicar as mudanças no banco de dados
+Após criar a migration, aplique-a ao banco com:
+
+sh
+Copiar
+Editar
+dotnet ef database update
+🛑 Se der erro na migration
+Caso tenha problemas (exemplo: Inconsistências no modelo), pode ser necessário remover a última migration e refazer:
+
+sh
+Copiar
+Editar
+dotnet ef migrations remove
+dotnet ef migrations add NomeDaMigration
+dotnet ef database update
+Se precisar fazer algo mais específico, me avise! 🚀

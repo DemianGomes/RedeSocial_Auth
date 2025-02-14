@@ -1,6 +1,6 @@
-@MaisUmaRedeSocial_HostAddress = http://localhost:5052
+@RedeSocial_Auth_HostAddress = http://localhost:5052
 
-GET {{MaisUmaRedeSocial_HostAddress}}/weatherforecast/
+GET {{RedeSocial_Auth_HostAddress}}/
 Accept: application/json
 
 ###
