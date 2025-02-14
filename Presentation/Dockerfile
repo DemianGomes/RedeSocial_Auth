@@ -12,19 +12,19 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["MaisUmaRedeSocial.csproj", "."]
-RUN dotnet restore "./MaisUmaRedeSocial.csproj"
+COPY ["RedeSocial_Auth.csproj", "."]
+RUN dotnet restore "./RedeSocial_Auth.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "./MaisUmaRedeSocial.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./RedeSocial_Auth.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./MaisUmaRedeSocial.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./RedeSocial_Auth.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # Esta fase é usada na produção ou quando executada no VS no modo normal (padrão quando não está usando a configuração de Depuração)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MaisUmaRedeSocial.dll"]
+ENTRYPOINT ["dotnet", "RedeSocial_Auth.dll"]
