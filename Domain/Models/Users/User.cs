@@ -16,7 +16,6 @@ namespace RedeSocial_Auth.Domain.Models.Users
         public string Email { get; set; }
         public string PasswordHash { get; set; }
 
-        [JsonIgnore]
         public DateTime CreatedAt { get; set; }
 
         [JsonIgnore]
